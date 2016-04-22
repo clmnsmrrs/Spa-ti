@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Spa_ti" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" showsPointsOfInterest="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AGn-s3-9Eu">
+                                <rect key="frame" x="0.0" y="94" width="600" height="506"/>
+                            </mapView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yqz-jK-ZSf">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="94"/>
+                                <color key="backgroundColor" red="0.27058823529411763" green="0.85490196078431369" blue="0.58823529411764708" alpha="0.96015625000000004" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="yqz-jK-ZSf" secondAttribute="height" multiplier="300:47" id="F3a-Ty-3xa"/>
+                                </constraints>
+                                <attributedString key="attributedText">
+                                    <fragment content="SPÄTI">
+                                        <attributes>
+                                            <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="21" name="Avenir-Medium"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="truncatingMiddle" baseWritingDirection="natural" lineHeightMultiple="2" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="yqz-jK-ZSf" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="5j2-FK-IHW"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="yqz-jK-ZSf" secondAttribute="trailing" constant="-20" id="95O-eR-LFb"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="AGn-s3-9Eu" secondAttribute="bottom" id="FR1-My-uYV"/>
+                            <constraint firstItem="AGn-s3-9Eu" firstAttribute="top" secondItem="yqz-jK-ZSf" secondAttribute="bottom" id="PmF-Up-Lge"/>
+                            <constraint firstItem="AGn-s3-9Eu" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="Xzn-vW-Guw"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="AGn-s3-9Eu" secondAttribute="trailing" constant="-20" id="gKK-fY-tRh"/>
+                            <constraint firstItem="yqz-jK-ZSf" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" id="vTM-Ex-CrN"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="label" destination="yqz-jK-ZSf" id="q4E-cp-RDR"/>
+                        <outlet property="map" destination="AGn-s3-9Eu" id="eEP-Dm-Rtn"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="288" y="294"/>
+        </scene>
+    </scenes>
+</document>
