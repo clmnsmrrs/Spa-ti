@@ -45,22 +45,39 @@ class testViewClass: UIViewController {
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("späticell", forIndexPath: indexPath)
-        cell.textLabel?.textColor = UIColor.blackColor()
-        cell.textLabel?.text = "\(names[indexPath.row])"
+        
+        let cell: SpätiCell = tableView.dequeueReusableCellWithIdentifier("späticell") as! SpätiCell
+        
+        let Späti = arrayofSpätis[indexPath.row]
+        
+        cell.nameLabel.text = Späti.name
+        cell.addressLabel.text = Späti.address
         
         return cell
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return names.count
+        return arrayofSpätis.count
     }
     
     @IBAction func reload(sender: AnyObject) {
         
         self.tableView.reloadData()
         print("reload")
-        print(names.count)
+        print(arrayofSpätis.count)
         
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath){
+        
+        let Späti = arrayofSpätis[indexPath.row]
+        
+        let ViewController: detailedspätiView = self.storyboard!.instantiateViewControllerWithIdentifier("detailedspätiView") as! detailedspätiView
+        
+        ViewController.name = Späti.name
+        ViewController.address = Späti.address
+        ViewController.coordinate = Späti.coordinate
+    
+        presentViewController(ViewController, animated: false, completion: nil)
     }
 }

@@ -222,7 +222,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fw0-yP-ad1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="84" y="330"/>
+            <point key="canvasLocation" x="212" y="330"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="mwj-Ka-cFR">
@@ -266,7 +266,7 @@
                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="22"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="uAk-MD-7W7">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="top" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uAk-MD-7W7">
                                 <rect key="frame" x="180" y="119" width="240" height="317"/>
                                 <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <string key="text">So to make this experience cooler for you, I have to ask for your location while you use the App. This way you can locate yourself and see where the nearest Spätis are and you can find out how to get there! The App will work without your location, but it's just not as useful for you. So if you'd like to make the decision, just hit the button down below! Thanks!</string>
@@ -281,7 +281,7 @@
                                     <constraint firstAttribute="width" constant="153" id="vnD-dK-n8E"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="15"/>
-                                <state key="normal" title="Make That Decision">
+                                <state key="normal" title="Enable User Location">
                                     <color key="titleColor" red="0.29803921568627451" green="0.85882352941176465" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
@@ -370,7 +370,7 @@
         <!--Test View Class-->
         <scene sceneID="zgH-F1-UGd">
             <objects>
-                <viewController id="OhP-S9-TmK" customClass="testViewClass" customModule="Spa_ti" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="testViewClass" useStoryboardIdentifierAsRestorationIdentifier="YES" id="OhP-S9-TmK" customClass="testViewClass" customModule="Spa_ti" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="tJN-b9-GWJ"/>
                         <viewControllerLayoutGuide type="bottom" id="KN3-X0-oft"/>
@@ -405,13 +405,34 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="separatorColor" red="0.29803921570000003" green="0.85882352939999995" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="späticell" rowHeight="104" id="ygR-rr-5mR">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="späticell" rowHeight="104" id="ygR-rr-5mR" customClass="SpätiCell" customModule="Spa_ti" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="600" height="104"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ygR-rr-5mR" id="f3J-i9-Izk">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="103"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="567" height="103"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="iconlist" translatesAutoresizingMaskIntoConstraints="NO" id="l6M-uw-MaG">
+                                                    <rect key="frame" x="22" y="22" width="57" height="57"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="zMT-xY-U0E">
+                                                    <rect key="frame" x="101" y="22" width="469" height="31"/>
+                                                    <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="18"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="a3n-W0-QJA">
+                                                    <rect key="frame" x="101" y="48" width="282" height="31"/>
+                                                    <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="15"/>
+                                                    <color key="textColor" red="0.40000000600000002" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="addressLabel" destination="a3n-W0-QJA" id="1yn-JH-mXz"/>
+                                            <outlet property="nameLabel" destination="zMT-xY-U0E" id="Cog-aD-GML"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -456,6 +477,96 @@
             </objects>
             <point key="canvasLocation" x="1900" y="330"/>
         </scene>
+        <!--Detailedspäti View-->
+        <scene sceneID="sTn-wC-9Gv">
+            <objects>
+                <viewController storyboardIdentifier="detailedspätiView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="mCu-Pb-bkN" customClass="detailedspätiView" customModule="Spa_ti" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="kcV-VI-5nR"/>
+                        <viewControllerLayoutGuide type="bottom" id="n8G-Bj-aLq"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="hdD-rh-awL">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="blurberlin" translatesAutoresizingMaskIntoConstraints="NO" id="kFH-QX-4Wd">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="166"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Torstraße 129, 10119 Berlin" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="hIw-jN-EWt">
+                                <rect key="frame" x="0.0" y="225" width="600" height="54"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="54" id="YKe-Cr-f9C"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="18"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" zoomEnabled="NO" scrollEnabled="NO" rotateEnabled="NO" pitchEnabled="NO" showsBuildings="NO" showsPointsOfInterest="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HjD-um-t8n">
+                                <rect key="frame" x="0.0" y="406" width="600" height="194"/>
+                            </mapView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Spätkauf 24" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="9a1-kv-XFw">
+                                <rect key="frame" x="0.0" y="49" width="600" height="68"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="68" id="Bca-g2-9ZD"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="22"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <color key="shadowColor" red="0.0" green="0.0" blue="0.0" alpha="0.40670797413793103" colorSpace="calibratedRGB"/>
+                                <size key="shadowOffset" width="-2" height="2"/>
+                            </label>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bwM-ro-fub">
+                                <rect key="frame" x="0.0" y="362" width="600" height="44"/>
+                                <items>
+                                    <barButtonItem systemItem="done" id="7A7-aX-TeY">
+                                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <action selector="backButton:" destination="mCu-Pb-bkN" id="0Im-NI-fTX"/>
+                                            <segue destination="ggx-Yz-cHX" kind="show" id="v5h-gf-Det"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="7HD-Eq-JCx"/>
+                                    <barButtonItem title="Route" id="D97-Cu-sIB">
+                                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <action selector="routetoLocation:" destination="mCu-Pb-bkN" id="2m9-hN-lpq"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                                <color key="barTintColor" red="0.29803921568627451" green="0.85882352941176465" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                            </toolbar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="9a1-kv-XFw" secondAttribute="trailing" id="26G-KF-T3k"/>
+                            <constraint firstItem="kFH-QX-4Wd" firstAttribute="trailing" secondItem="hIw-jN-EWt" secondAttribute="trailing" id="5Mp-Aq-x60"/>
+                            <constraint firstItem="9a1-kv-XFw" firstAttribute="top" secondItem="kFH-QX-4Wd" secondAttribute="top" constant="49" id="5Re-UN-R0e"/>
+                            <constraint firstItem="HjD-um-t8n" firstAttribute="bottom" secondItem="n8G-Bj-aLq" secondAttribute="top" id="BgV-G1-WxJ"/>
+                            <constraint firstItem="bwM-ro-fub" firstAttribute="leading" secondItem="HjD-um-t8n" secondAttribute="leading" id="Iug-VN-ahB"/>
+                            <constraint firstItem="kFH-QX-4Wd" firstAttribute="bottom" secondItem="9a1-kv-XFw" secondAttribute="bottom" constant="49" id="L15-O5-AmE"/>
+                            <constraint firstItem="kFH-QX-4Wd" firstAttribute="leading" secondItem="hdD-rh-awL" secondAttribute="leading" id="QjH-dd-ee9"/>
+                            <constraint firstItem="bwM-ro-fub" firstAttribute="top" secondItem="hIw-jN-EWt" secondAttribute="bottom" constant="83" id="SV1-2H-MK3"/>
+                            <constraint firstItem="hIw-jN-EWt" firstAttribute="leading" secondItem="bwM-ro-fub" secondAttribute="leading" id="UtP-Kk-D4Q"/>
+                            <constraint firstItem="kFH-QX-4Wd" firstAttribute="leading" secondItem="9a1-kv-XFw" secondAttribute="leading" id="X8C-xU-q35"/>
+                            <constraint firstItem="hIw-jN-EWt" firstAttribute="trailing" secondItem="bwM-ro-fub" secondAttribute="trailing" id="emn-la-q3z"/>
+                            <constraint firstItem="bwM-ro-fub" firstAttribute="trailing" secondItem="HjD-um-t8n" secondAttribute="trailing" id="gbe-th-VZu"/>
+                            <constraint firstItem="hIw-jN-EWt" firstAttribute="top" secondItem="kFH-QX-4Wd" secondAttribute="bottom" constant="59" id="h35-qh-hA1"/>
+                            <constraint firstItem="HjD-um-t8n" firstAttribute="top" secondItem="bwM-ro-fub" secondAttribute="bottom" id="qh7-tC-R3c"/>
+                            <constraint firstItem="9a1-kv-XFw" firstAttribute="leading" secondItem="hIw-jN-EWt" secondAttribute="leading" id="ssk-pT-RZx"/>
+                            <constraint firstItem="9a1-kv-XFw" firstAttribute="trailing" secondItem="kFH-QX-4Wd" secondAttribute="trailing" id="uK5-Pb-Kh3"/>
+                            <constraint firstItem="kFH-QX-4Wd" firstAttribute="top" secondItem="hdD-rh-awL" secondAttribute="top" id="wPS-sQ-ssc"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="addressLabel" destination="hIw-jN-EWt" id="s0C-eY-3YR"/>
+                        <outlet property="locationMapView" destination="HjD-um-t8n" id="4Pi-OY-SiA"/>
+                        <outlet property="nameLabel" destination="9a1-kv-XFw" id="fPy-Ba-IsP"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sFQ-GC-24H" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2579" y="330"/>
+        </scene>
         <!--Works View Controller-->
         <scene sceneID="Azm-u3-4UP">
             <objects>
@@ -498,10 +609,10 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="tuA-00-WPa">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="top" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tuA-00-WPa">
                                 <rect key="frame" x="49" y="105" width="502" height="495"/>
                                 <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <mutableString key="text">Have you ever been in parts of Berlin, that you don't know and craved a drink, a snack or some cigarettes? "Späti" was made to get rid of that problem and help you find what you need the most in the quickest possible way! Just go to the Map View and you'll find your current location and the Spätis, that are closest to you! All you need to do then is click on the desired pin, hit "Route" and the navigation will begin! If that's not enough, it also displays which shops are still open and what services they offer! Have fun, but drink responsibly!</mutableString>
+                                <string key="text">Have you ever been in parts of Berlin, that you don't know and craved a drink, a snack or some cigarettes? "Späti" was made to get rid of that problem and help you find what you need the most in the quickest possible way! Just go to the Map View and you'll find your current location and the Spätis, that are closest to you! All you need to do then is click on the desired pin, hit "Route" and the navigation will begin! If that's not enough, it also displays which shops are still open and what services they offer! Have fun, but drink responsibly!</string>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="22"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -536,6 +647,7 @@
     </scenes>
     <resources>
         <image name="blurberlin" width="1280" height="720"/>
+        <image name="iconlist" width="181" height="181"/>
         <image name="locate" width="33" height="33"/>
         <image name="menu" width="26" height="19"/>
     </resources>

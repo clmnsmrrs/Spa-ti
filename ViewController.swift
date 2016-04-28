@@ -10,7 +10,7 @@ import UIKit
 import MapKit
 import CoreLocation
 
-var names = [String]()
+var arrayofSpätis = [SpätiClass]()
 
 class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate{
     
@@ -51,6 +51,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
             presentViewController(ViewController, animated: true, completion: nil)
         }
         
+        
 
         
         self.navigationController?.navigationBar.barTintColor = greencolor
@@ -80,7 +81,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
             
             centerMapOnLocation(initialLocations!)
             
-            names.removeAll()
+            arrayofSpätis.removeAll()
             
             let annotationQuery = PFQuery(className: "Locations")
             
@@ -94,10 +95,13 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
                     for location in myLocations {
                         let point = location["location"] as! PFGeoPoint
                         let title = location["name"] as! String
+                        let address = location["address"] as! String
                         let annotation = MKPointAnnotation()
                         annotation.coordinate = CLLocationCoordinate2DMake(point.latitude, point.longitude)
                         annotation.title = title
-                        names.append(title)
+                        annotation.subtitle = address
+                        let thisSpäti = SpätiClass(name: title, address: address,coordinate: annotation.coordinate)
+                        arrayofSpätis.append(thisSpäti)
                         self.map.addAnnotation(annotation)
                     }
                 } else {
@@ -153,8 +157,25 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         }
         
     }
-    override func viewDidAppear(animated: Bool) {
-       
+    
+    func mapView(mapView: MKMapView,
+                 didSelectAnnotationView view: MKAnnotationView){
+        
+        print("Selected annotation")
+    }
+    
+    func mapView(mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+        
+//        let tappedSpäti = view.annotation as! SpätiClass
+        let placeName = view.annotation?.title
+        let placeInfo = "test this shit out"
+        
+        let ac = UIAlertController(title: placeName!, message: placeInfo, preferredStyle: .Alert)
+        ac.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
+        presentViewController(ac, animated: true, completion: nil)
+        
+        //put a view controller here with the correct information
+        print("pressed the detail button")
     }
     
     
@@ -173,6 +194,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         
         if annotationView == nil
         {
+            
             annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: "pin")
             annotationView!.canShowCallout = true
             annotationView!.image = UIImage(named: "spati")
@@ -205,12 +227,16 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
                 for location in myLocations {
                     let point = location["location"] as! PFGeoPoint
                     let title = location["name"] as! String
+                    let address = location["address"] as! String
                     let annotation = MKPointAnnotation()
                     annotation.coordinate = CLLocationCoordinate2DMake(point.latitude, point.longitude)
                     annotation.title = title
-                    
+                    annotation.subtitle = address
+                    let thisSpäti = SpätiClass(name: title, address: address,coordinate: annotation.coordinate)
+                    arrayofSpätis.append(thisSpäti)
                     self.map.addAnnotation(annotation)
                 }
+
             } else {
                 // Log details of the failure
                 print("Error: \(error)")

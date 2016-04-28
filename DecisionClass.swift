@@ -22,21 +22,24 @@ class DecisionClass: UIViewController, CLLocationManagerDelegate{
     
     @IBAction func decisionButton(sender: AnyObject) {
 
-        if(decisionbutton.currentTitle == "Make That Decision"){
+        if(decisionbutton.currentTitle == "Enable User Location"){
             
             locationManage.requestWhenInUseAuthorization()
-            decisionbutton.setTitle("Done", forState: UIControlState.Normal)
+            
+            decisionbutton.setTitle("GET STARTED", forState: UIControlState.Normal)
+            NSUserDefaults.standardUserDefaults().setBool(true, forKey: "tutorial")
+            
+            
             
         }
         else{
-            
             let ViewControllerfirst: NavigationController = self.storyboard!.instantiateViewControllerWithIdentifier("ViewController") as! NavigationController
             
             presentViewController(ViewControllerfirst, animated: true, completion: nil)
             
+            
         }
-        
-}
-    
+
+    }
     
 }
