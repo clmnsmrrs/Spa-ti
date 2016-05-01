@@ -59,20 +59,6 @@ class detailedspätiView: UIViewController, MKMapViewDelegate, CLLocationManager
         self.locationMapView.setRegion(coordinateRegion, animated: true)
     }
     
-    func mapView(mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
-        
-        //        let tappedSpäti = view.annotation as! SpätiClass
-        let placeName = view.annotation?.title
-        let placeInfo = "test this shit out"
-        
-        let ac = UIAlertController(title: placeName!, message: placeInfo, preferredStyle: .Alert)
-        ac.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
-        presentViewController(ac, animated: true, completion: nil)
-        
-        //put a view controller here with the correct information
-        print("pressed the detail button")
-    }
-    
     
     func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
         

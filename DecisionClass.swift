@@ -17,7 +17,7 @@ class DecisionClass: UIViewController, CLLocationManagerDelegate{
     override func viewDidAppear(animated: Bool) {
         
         locationManage.delegate = self
-        NSUserDefaults.standardUserDefaults().setBool(true, forKey: "tutorial")
+       
     }
     
     @IBAction func decisionButton(sender: AnyObject) {

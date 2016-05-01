@@ -24,8 +24,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         Parse.initializeWithConfiguration(configuration)
         
-        
         return true
+    }
+    
+    func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
+        //Store the deviceToken in the current installation and save it to Parse.
+        
+        let currentInstallation: PFInstallation = PFInstallation.currentInstallation()
+        currentInstallation.setDeviceTokenFromData(deviceToken)
+        currentInstallation.saveInBackground()
+    }
+    
+    func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
+        
     }
 
     func applicationWillResignActive(application: UIApplication) {

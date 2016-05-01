@@ -28,11 +28,10 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     
     let reuseIdentifier = "spati"
     
-    var animationarray = [UIImage(named: "button17"), UIImage(named: "button16"), UIImage(named: "button15"), UIImage(named: "button14"), UIImage(named: "button13"), UIImage(named: "button12"), UIImage(named: "button11"), UIImage(named: "button10"), UIImage(named: "button9"), UIImage(named: "button8"), UIImage(named: "button7"), UIImage(named: "button6"), UIImage(named: "button5"), UIImage(named: "button4"), UIImage(named: "button3"), UIImage(named: "button2"), UIImage(named: "button1")]
-    
-   @IBOutlet weak var menuButton: UIBarButtonItem!
-    
     @IBOutlet weak var locationsButton: UIButton!
+    
+    @IBOutlet weak var menuButton: UIBarButtonItem!
+    
     
     let tutorial:Bool = NSUserDefaults.standardUserDefaults().boolForKey("tutorial")
     
@@ -46,34 +45,17 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         }
         else
         {
-            let ViewController: DecisionClass = self.storyboard!.instantiateViewControllerWithIdentifier("DecisionViewController") as! DecisionClass
+            let ViewController: NavigationController = self.storyboard!.instantiateViewControllerWithIdentifier("DecisionViewController") as! NavigationController
             
             presentViewController(ViewController, animated: true, completion: nil)
         }
         
-        
-
-        
-        self.navigationController?.navigationBar.barTintColor = greencolor
-        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor()]
         
         locationManage.delegate = self
         locationManage.desiredAccuracy = kCLLocationAccuracyBest
         locationManage.startUpdatingLocation()
         
         let authorizationStatus = CLLocationManager.authorizationStatus()
-        switch authorizationStatus {
-        case .Authorized:
-            print("authorized")
-        case .AuthorizedWhenInUse:
-            print("authorized when in use")
-        case .Denied:
-            print("denied")
-        case .NotDetermined:
-            print("not determined")
-        case .Restricted:
-            print("restricted")
-        }
         
         if (authorizationStatus == .AuthorizedWhenInUse){
         
@@ -153,7 +135,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         if self.revealViewController() != nil {
             menuButton.target = self.revealViewController()
             menuButton.action = #selector(SWRevealViewController.revealToggle(_:))
-            self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+            view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
         
     }
@@ -166,12 +148,30 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     
     func mapView(mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         
-//        let tappedSpäti = view.annotation as! SpätiClass
+
         let placeName = view.annotation?.title
-        let placeInfo = "test this shit out"
+        let placeInfo = view.annotation?.subtitle
         
-        let ac = UIAlertController(title: placeName!, message: placeInfo, preferredStyle: .Alert)
-        ac.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
+        let routeaction = UIAlertAction(title: "Route", style: .Default) { (action) in
+            
+            let thiscoordinate = view.annotation?.coordinate
+            let regionDistance:CLLocationDistance = 10000
+            
+            let regionSpan = MKCoordinateRegionMakeWithDistance(thiscoordinate!, regionDistance, regionDistance)
+            let options = [
+                MKLaunchOptionsMapCenterKey: NSValue(MKCoordinate: regionSpan.center),
+                MKLaunchOptionsMapSpanKey: NSValue(MKCoordinateSpan: regionSpan.span)
+            ]
+            let placemark = MKPlacemark(coordinate: thiscoordinate!, addressDictionary: nil)
+            let mapItem = MKMapItem(placemark: placemark)
+            mapItem.name = (view.annotation?.title)!
+            mapItem.openInMapsWithLaunchOptions(options)
+            
+        }
+ 
+        let ac = UIAlertController(title: placeName!, message: placeInfo!, preferredStyle: .Alert)
+        ac.addAction(UIAlertAction(title: "Done", style: .Default, handler: nil))
+        ac.addAction(routeaction)
         presentViewController(ac, animated: true, completion: nil)
         
         //put a view controller here with the correct information
@@ -188,6 +188,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         }
         
         let detailButton: UIButton = UIButton(type: UIButtonType.DetailDisclosure)
+            detailButton.tintColor = greencolor
         
         // Reuse the annotation if possible
         var annotationView = mapView.dequeueReusableAnnotationViewWithIdentifier(identifier)
