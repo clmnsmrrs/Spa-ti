@@ -29,22 +29,6 @@ class SubmitViewController: UITableViewController, CLLocationManagerDelegate {
     
     @IBOutlet weak var locationField: UITextField!
     
-//    @IBAction func currentLocation(sender: AnyObject) {
-//        let locationManage = CLLocationManager()
-//        let authorizationStatus = CLLocationManager.authorizationStatus()
-//        
-//        if (authorizationStatus == .AuthorizedWhenInUse){
-//        location = locationManage.location!
-//        }
-//        else {
-//            
-//            let ac = UIAlertController(title: "Location sharing not authorized", message: "Please go to settings and share your location", preferredStyle: .Alert)
-//            ac.addAction(UIAlertAction(title: "Done", style: .Default, handler: nil))
-//            presentViewController(ac, animated: true, completion: nil)
-//            
-//        }
-//    }
-    
     @IBAction func submitSpäti(sender: AnyObject) {
         
         if(nameField.text != "" && locationField.text != ""){
@@ -67,16 +51,18 @@ class SubmitViewController: UITableViewController, CLLocationManagerDelegate {
         }
         else {
             
-            let ac = UIAlertController(title: "Information Missing", message: "Please Add details to all fields", preferredStyle: .Alert)
+            let ac = UIAlertController(title: "Information Missing", message: "Please add details to all fields", preferredStyle: .Alert)
             ac.addAction(UIAlertAction(title: "Done", style: .Default, handler: nil))
             presentViewController(ac, animated: true, completion: nil)
             
         }
     }
     
-        
-        
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
     }
+}
     
     
     

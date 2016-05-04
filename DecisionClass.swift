@@ -33,7 +33,7 @@ class DecisionClass: UIViewController, CLLocationManagerDelegate{
             
         }
         else{
-            let ViewControllerfirst: NavigationController = self.storyboard!.instantiateViewControllerWithIdentifier("ViewController") as! NavigationController
+            let ViewControllerfirst: SWRevealViewController = self.storyboard!.instantiateViewControllerWithIdentifier("start") as! SWRevealViewController
             
             presentViewController(ViewControllerfirst, animated: true, completion: nil)
             

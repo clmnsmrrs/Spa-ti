@@ -12,6 +12,11 @@ class NavigationController: UINavigationController {
 
     var greencolor = UIColor(red:0.30, green:0.86, blue:0.60, alpha:1.0)
     
+    override func viewDidLoad() {
+        navigationBar.barTintColor = greencolor
+        navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor()]
+    }
+    
     override func viewDidAppear(animated: Bool) {
         
         navigationBar.barTintColor = greencolor

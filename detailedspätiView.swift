@@ -88,9 +88,9 @@ class detailedspätiView: UIViewController, MKMapViewDelegate, CLLocationManager
     
     @IBAction func backButton(sender: AnyObject) {
         
-//        let ViewController: testViewClass = self.storyboard!.instantiateViewControllerWithIdentifier("testViewClass") as! testViewClass
-//        
-//        presentViewController(ViewController, animated: false, completion: nil)
+        let ViewController: SWRevealViewController = self.storyboard!.instantiateViewControllerWithIdentifier("start") as! SWRevealViewController
+        
+        presentViewController(ViewController, animated: false, completion: nil)
         
     }
     

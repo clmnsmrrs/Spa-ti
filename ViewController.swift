@@ -9,10 +9,15 @@
 import UIKit
 import MapKit
 import CoreLocation
+import GoogleMobileAds
 
 var arrayofSpätis = [SpätiClass]()
 
-class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate{
+class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, GADInterstitialDelegate{
+    
+    var interstitial: GADInterstitial?
+    
+    var interstitialcounter = 5
     
     var locationManage = CLLocationManager()
     
@@ -32,6 +37,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     
     @IBOutlet weak var menuButton: UIBarButtonItem!
     
+    @IBOutlet weak var bannerView: GADBannerView!
     
     let tutorial:Bool = NSUserDefaults.standardUserDefaults().boolForKey("tutorial")
     
@@ -50,6 +56,11 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
             presentViewController(ViewController, animated: true, completion: nil)
         }
         
+        bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
+        bannerView.rootViewController = self
+        bannerView.loadRequest(GADRequest())
+        
+        loadInterstitial()
         
         locationManage.delegate = self
         locationManage.desiredAccuracy = kCLLocationAccuracyBest
@@ -143,7 +154,23 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     func mapView(mapView: MKMapView,
                  didSelectAnnotationView view: MKAnnotationView){
         
-        print("Selected annotation")
+        interstitialcounter = interstitialcounter - 1
+        
+        if (interstitialcounter == 0){
+            
+            if(interstitial!.isReady){
+            print("now")
+            interstitial!.presentFromRootViewController(self)
+            }
+            
+            else{
+                
+                interstitialcounter = 2
+                print("not loaded yet")
+                
+            }
+        }
+        
     }
     
     func mapView(mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
@@ -282,6 +309,11 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         )
     }
 
+    private func loadInterstitial() {
+        interstitial = GADInterstitial(adUnitID: "ca-app-pub-3940256099942544/4411468910")
+        interstitial!.delegate = self
+        interstitial!.loadRequest(GADRequest())
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
