@@ -8,14 +8,26 @@
 
 import UIKit
 import MessageUI
+import StoreKit
 
-class ContactController: UITableViewController,  MFMailComposeViewControllerDelegate {
+
+
+class ContactController: UITableViewController,  MFMailComposeViewControllerDelegate, SKProductsRequestDelegate, SKPaymentTransactionObserver {
+    
+    let productIdentifiers: NSObject = Set(["RemoveAd"])
+    var product: SKProduct?
+    var productsArray = Array<SKProduct>()
     
     @IBOutlet weak var menuButton: UIBarButtonItem!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        print(productsArray.count)
+        
+        SKPaymentQueue.defaultQueue().addTransactionObserver(self)
+        requestProductData()
         
         if self.revealViewController() != nil {
             menuButton.target = self.revealViewController()
@@ -72,4 +84,180 @@ class ContactController: UITableViewController,  MFMailComposeViewControllerDele
         controller.dismissViewControllerAnimated(true, completion: nil)
     }
     
+    
+    @IBAction func removeAds(sender: AnyObject) {
+        if(NSUserDefaults.standardUserDefaults().boolForKey("removead")==false){
+        
+        let actionSheetController = UIAlertController(title: "Remove Ads", message: "What do you want to do?", preferredStyle: UIAlertControllerStyle.ActionSheet)
+        
+        let buyAction = UIAlertAction(title: "Buy", style: UIAlertActionStyle.Default) { (action) -> Void in
+            let payment = SKPayment(product: self.productsArray[0])
+            SKPaymentQueue.defaultQueue().addPayment(payment)
+            
+        }
+            
+
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel) { (action) -> Void in
+            
+        }
+        
+        actionSheetController.addAction(buyAction)
+        actionSheetController.addAction(cancelAction)
+        
+        presentViewController(actionSheetController, animated: true, completion: nil)
+        
+        }
+        else{
+            
+            let alertSheetController = UIAlertController(title: "Already Done", message: "You already live in an Ad Free World", preferredStyle: UIAlertControllerStyle.ActionSheet)
+            
+            let cancelAction = UIAlertAction(title: "OK!", style: UIAlertActionStyle.Cancel) { (action) -> Void in
+                
+            }
+            
+            alertSheetController.addAction(cancelAction)
+            
+            presentViewController(alertSheetController, animated: true, completion: nil)
+            
+            
+        }
+    }
+    
+    func requestProductData()
+    {
+        if SKPaymentQueue.canMakePayments() {
+            let request = SKProductsRequest(productIdentifiers: self.productIdentifiers as! Set<String>)
+            request.delegate = self
+            request.start()
+        } else {
+            let alert = UIAlertController(title: "In-App Purchases Not Enabled", message: "Please enable In App Purchase in Settings", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "Settings", style: UIAlertActionStyle.Default, handler: { alertAction in
+                alert.dismissViewControllerAnimated(true, completion: nil)
+                
+                let url: NSURL? = NSURL(string: UIApplicationOpenSettingsURLString)
+                if url != nil
+                {
+                    UIApplication.sharedApplication().openURL(url!)
+                }
+                
+            }))
+            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: { alertAction in
+                alert.dismissViewControllerAnimated(true, completion: nil)
+            }))
+            self.presentViewController(alert, animated: true, completion: nil)
+        }
+    }
+    
+    func productsRequest(request: SKProductsRequest, didReceiveResponse response: SKProductsResponse) {
+        var products = response.products
+        
+        if (products.count != 0) {
+            for i in 0 ..< products.count
+            {
+                self.product = products[i] as SKProduct
+                self.productsArray.append(product!)
+            }
+        } else {
+            print("No products found")
+        }
+        
+      // products = response.invalidProductIdentifiers
+        
+        for product in products
+        {
+            print("Product not found: \(product)")
+        }
+
+    }
+    func paymentQueue(queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
+        for transaction in transactions {
+            
+            switch transaction.transactionState {
+                
+            case SKPaymentTransactionState.Purchased:
+                print("Transaction Approved")
+                print("Product Identifier: \(transaction.payment.productIdentifier)")
+                self.deliverProduct(transaction)
+                SKPaymentQueue.defaultQueue().finishTransaction(transaction)
+                
+            case SKPaymentTransactionState.Failed:
+                print("Transaction Failed")
+                SKPaymentQueue.defaultQueue().finishTransaction(transaction)
+            default:
+                break
+            }
+        }
+    }
+    
+    func deliverProduct(transaction:SKPaymentTransaction) {
+        
+        if transaction.payment.productIdentifier == "RemoveAd"
+        {
+            print("Non-Consumable Product Purchased")
+            NSUserDefaults.standardUserDefaults().setBool(true, forKey: "removead")
+            
+        }
+        else if transaction.payment.productIdentifier == "com.brianjcoleman.testiap2"
+        {
+            print("Non-Consumable Product Purchased")
+            // Unlock Feature
+        }
+        else if transaction.payment.productIdentifier == "com.brianjcoleman.testiap3"
+        {
+            print("Auto-Renewable Subscription Product Purchased")
+            // Unlock Feature
+        }
+        else if transaction.payment.productIdentifier == "com.brianjcoleman.testiap4"
+        {
+            print("Free Subscription Product Purchased")
+            // Unlock Feature
+        }
+        else if transaction.payment.productIdentifier == "com.brianjcoleman.testiap5"
+        {
+            print("Non-Renewing Subscription Product Purchased")
+            // Unlock Feature
+        }
+    }
+    @IBAction func restorePurchase(sender: AnyObject) {
+        SKPaymentQueue.defaultQueue().addTransactionObserver(self)
+        SKPaymentQueue.defaultQueue().restoreCompletedTransactions()
+    }
+    
+    func paymentQueueRestoreCompletedTransactionsFinished(queue: SKPaymentQueue) {
+        print("Transactions Restored")
+        
+        for transaction:SKPaymentTransaction in queue.transactions {
+            
+            if transaction.payment.productIdentifier == "RemoveAd"
+            {
+                print("Non-Consumable Product Purchased")
+                NSUserDefaults.standardUserDefaults().setBool(true, forKey: "removead")
+            }
+            else if transaction.payment.productIdentifier == "com.brianjcoleman.testiap2"
+            {
+                print("Non-Consumable Product Purchased")
+                // Unlock Feature
+            }
+            else if transaction.payment.productIdentifier == "com.brianjcoleman.testiap3"
+            {
+                print("Auto-Renewable Subscription Product Purchased")
+                // Unlock Feature
+            }
+            else if transaction.payment.productIdentifier == "com.brianjcoleman.testiap4"
+            {
+                print("Free Subscription Product Purchased")
+                // Unlock Feature
+            }
+            else if transaction.payment.productIdentifier == "com.brianjcoleman.testiap5"
+            {
+                print("Non-Renewing Subscription Product Purchased")
+                // Unlock Feature
+            }
+        }
+        
+        let alert = UIAlertView(title: "Thank You", message: "Your purchase was restored.", delegate: nil, cancelButtonTitle: "OK")
+        alert.show()
+    }
+
 }

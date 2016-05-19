@@ -13,6 +13,8 @@ import GoogleMobileAds
 
 var arrayofSpätis = [SpätiClass]()
 
+let removead:Bool = NSUserDefaults.standardUserDefaults().boolForKey("removead")
+
 class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, GADInterstitialDelegate{
     
     var interstitial: GADInterstitial?
@@ -54,6 +56,17 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
             let ViewController: NavigationController = self.storyboard!.instantiateViewControllerWithIdentifier("DecisionViewController") as! NavigationController
             
             presentViewController(ViewController, animated: true, completion: nil)
+        }
+        
+        if(NSUserDefaults.standardUserDefaults().boolForKey("removead")==true){
+            
+            bannerView.hidden = true
+            
+            
+        }
+        else
+        {
+            
         }
         
         bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
@@ -156,7 +169,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         
         interstitialcounter = interstitialcounter - 1
         
-        if (interstitialcounter == 0){
+        if (interstitialcounter == 0 && NSUserDefaults.standardUserDefaults().boolForKey("removead")==false){
             
             if(interstitial!.isReady){
             print("now")
