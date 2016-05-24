@@ -8,20 +8,22 @@
 
 import UIKit
 import MessageUI
-import AVFoundation
 
 class MenuController: UITableViewController, MFMailComposeViewControllerDelegate {
     
     @IBOutlet weak var tableview: UITableView!
     
-    var menuselect:AVAudioPlayer?
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let menuselect = self.setupAudioPlayerWithFile("tick", type: "mp3"){
-            self.menuselect = menuselect
-        }
+        let backgroundImage = UIImage(named: "menupic-1")
+        let imageView = UIImageView(image: backgroundImage)
+        self.tableView.backgroundView = imageView
+       
+        self.tableview.backgroundView?.sizeToFit()
+        
         
     }
     
@@ -32,27 +34,14 @@ class MenuController: UITableViewController, MFMailComposeViewControllerDelegate
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
-        menuselect?.currentTime = 0.00
-        menuselect?.play()
+        
         
     }
     
-    func setupAudioPlayerWithFile(file:NSString, type:NSString) -> AVAudioPlayer?  { // Weird Audio Thing I Copied
-        //1
-        let path = NSBundle.mainBundle().pathForResource(file as String, ofType: type as String)
-        let url = NSURL.fileURLWithPath(path!)
-        
-        //2
-        var audioPlayer:AVAudioPlayer?
-        
-        // 3
-        do {
-            try audioPlayer = AVAudioPlayer(contentsOfURL: url)
-        } catch {
-            print("Player not available")
-        }
-        
-        return audioPlayer
+    override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        cell.backgroundColor = .clearColor()
     }
+   
+    
     
 }

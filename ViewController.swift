@@ -11,9 +11,9 @@ import MapKit
 import CoreLocation
 import GoogleMobileAds
 
+
 var arrayofSpätis = [SpätiClass]()
 
-let removead:Bool = NSUserDefaults.standardUserDefaults().boolForKey("removead")
 
 class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, GADInterstitialDelegate{
     
@@ -58,16 +58,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
             presentViewController(ViewController, animated: true, completion: nil)
         }
         
-        if(NSUserDefaults.standardUserDefaults().boolForKey("removead")==true){
-            
-            bannerView.hidden = true
-            
-            
-        }
-        else
-        {
-            
-        }
+        
         
         bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
         bannerView.rootViewController = self
@@ -119,7 +110,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
             
         }
         
-        else{
+        else if (authorizationStatus == .Denied ){
             
             locationsButton.hidden = true
             
@@ -150,12 +141,12 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
                     // Log details of the failure
                     print("Error: \(error)")
                 }
+                
             }
-
             
             
         }
-        
+            
         if self.revealViewController() != nil {
             menuButton.target = self.revealViewController()
             menuButton.action = #selector(SWRevealViewController.revealToggle(_:))
@@ -169,7 +160,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         
         interstitialcounter = interstitialcounter - 1
         
-        if (interstitialcounter == 0 && NSUserDefaults.standardUserDefaults().boolForKey("removead")==false){
+        if (interstitialcounter == 0 ){
             
             if(interstitial!.isReady){
             print("now")
@@ -214,7 +205,6 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         ac.addAction(routeaction)
         presentViewController(ac, animated: true, completion: nil)
         
-        //put a view controller here with the correct information
         print("pressed the detail button")
     }
     
