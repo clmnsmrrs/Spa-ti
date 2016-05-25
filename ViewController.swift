@@ -19,7 +19,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     
     var interstitial: GADInterstitial?
     
-    var interstitialcounter = 5
+    var interstitialcounter = 4
     
     var locationManage = CLLocationManager()
     

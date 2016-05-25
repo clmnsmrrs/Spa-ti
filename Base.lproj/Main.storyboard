@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -49,13 +50,13 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="VIEWS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AfS-R1-bm5">
-                                                    <rect key="frame" x="23" y="4" width="95" height="42"/>
+                                                    <rect key="frame" x="13" y="4" width="95" height="42"/>
                                                     <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="19"/>
                                                     <color key="textColor" red="0.3510870297" green="1" blue="0.70850635849999999" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
-                                            <color key="backgroundColor" red="0.50196081400000003" green="0.50196081400000003" blue="0.50196081400000003" alpha="0.41999999999999998" colorSpace="calibratedRGB"/>
+                                            <color key="backgroundColor" red="0.40000000600000002" green="0.40000000600000002" blue="0.40000000600000002" alpha="0.41999999999999998" colorSpace="calibratedRGB"/>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.41999999999999998" colorSpace="calibratedRGB"/>
                                     </tableViewCell>
@@ -66,14 +67,17 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="52"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="iconmenu" translatesAutoresizingMaskIntoConstraints="NO" id="fw6-Vh-7HP">
+                                                    <rect key="frame" x="18" y="8" width="27" height="37"/>
+                                                </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Map View" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jXu-DO-FA8">
-                                                    <rect key="frame" x="23" y="15" width="96" height="21"/>
+                                                    <rect key="frame" x="58" y="16" width="96" height="21"/>
                                                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
-                                            <color key="backgroundColor" red="0.50196081400000003" green="0.50196081400000003" blue="0.50196081400000003" alpha="0.41999999999999998" colorSpace="calibratedRGB"/>
+                                            <color key="backgroundColor" red="0.40000000600000002" green="0.40000000600000002" blue="0.40000000600000002" alpha="0.41999999999999998" colorSpace="calibratedRGB"/>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.41999999999999998" colorSpace="calibratedRGB"/>
                                         <connections>
@@ -87,14 +91,17 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="52"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="list" translatesAutoresizingMaskIntoConstraints="NO" id="HbE-fz-1UV">
+                                                    <rect key="frame" x="18" y="8" width="25" height="37"/>
+                                                </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="List View" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vWe-LD-V5O">
-                                                    <rect key="frame" x="23" y="15" width="82" height="21"/>
+                                                    <rect key="frame" x="58" y="16" width="82" height="21"/>
                                                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
-                                            <color key="backgroundColor" red="0.50196081400000003" green="0.50196081400000003" blue="0.50196081400000003" alpha="0.41999999999999998" colorSpace="calibratedRGB"/>
+                                            <color key="backgroundColor" red="0.40000000600000002" green="0.40000000600000002" blue="0.40000000600000002" alpha="0.41999999999999998" colorSpace="calibratedRGB"/>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.41999999999999998" colorSpace="calibratedRGB"/>
                                         <connections>
@@ -113,52 +120,34 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="INFO" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JyH-ys-Cl5">
-                                                    <rect key="frame" x="23" y="4" width="95" height="42"/>
+                                                    <rect key="frame" x="13" y="4" width="95" height="42"/>
                                                     <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="19"/>
                                                     <color key="textColor" red="0.3510870297" green="1" blue="0.70850635849999999" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
-                                            <color key="backgroundColor" red="0.50196081400000003" green="0.50196081400000003" blue="0.50196081400000003" alpha="0.41999999999999998" colorSpace="calibratedRGB"/>
+                                            <color key="backgroundColor" red="0.40000000600000002" green="0.40000000600000002" blue="0.40000000600000002" alpha="0.41999999999999998" colorSpace="calibratedRGB"/>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.41999999999999998" colorSpace="calibratedRGB"/>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="gray" hidesAccessoryWhenEditing="NO" indentationWidth="0.0" rowHeight="52" id="gHf-eg-HG7">
-                                        <rect key="frame" x="0.0" y="275" width="600" height="52"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gHf-eg-HG7" id="eGv-ie-WvW">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="52"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="How it works!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g7j-vS-gkP">
-                                                    <rect key="frame" x="23" y="14" width="102" height="24"/>
-                                                    <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
-                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <color key="backgroundColor" red="0.50196081400000003" green="0.50196081400000003" blue="0.50196081400000003" alpha="0.41999999999999998" colorSpace="calibratedRGB"/>
-                                        </tableViewCellContentView>
-                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        <connections>
-                                            <segue destination="ydZ-74-iye" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="yKK-ph-SvL"/>
-                                        </connections>
-                                    </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="52" id="0h5-zv-Miv">
-                                        <rect key="frame" x="0.0" y="327" width="600" height="52"/>
+                                        <rect key="frame" x="0.0" y="275" width="600" height="52"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0h5-zv-Miv" id="LIM-I8-kO2">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="52"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="submit" translatesAutoresizingMaskIntoConstraints="NO" id="qWZ-Px-yVj">
+                                                    <rect key="frame" x="18" y="12" width="27" height="27"/>
+                                                </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Submit a Späti" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fws-wp-eVh">
-                                                    <rect key="frame" x="23" y="14" width="111" height="24"/>
+                                                    <rect key="frame" x="58" y="14" width="111" height="24"/>
                                                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
-                                            <color key="backgroundColor" red="0.50196081400000003" green="0.50196081400000003" blue="0.50196081400000003" alpha="0.41999999999999998" colorSpace="calibratedRGB"/>
+                                            <color key="backgroundColor" red="0.40000000600000002" green="0.40000000600000002" blue="0.40000000600000002" alpha="0.41999999999999998" colorSpace="calibratedRGB"/>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.41999999999999998" colorSpace="calibratedRGB"/>
                                         <connections>
@@ -166,24 +155,51 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="52" id="Md9-6s-i3i">
-                                        <rect key="frame" x="0.0" y="379" width="600" height="52"/>
+                                        <rect key="frame" x="0.0" y="327" width="600" height="52"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Md9-6s-i3i" id="72l-V8-Nl8">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="52"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="report" translatesAutoresizingMaskIntoConstraints="NO" id="19y-Vt-ENf">
+                                                    <rect key="frame" x="18" y="12" width="27" height="27"/>
+                                                </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Report a Späti" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lAM-fm-9ru">
-                                                    <rect key="frame" x="23" y="14" width="108" height="24"/>
+                                                    <rect key="frame" x="58" y="14" width="108" height="24"/>
                                                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
-                                            <color key="backgroundColor" red="0.50196081400000003" green="0.50196081400000003" blue="0.50196081400000003" alpha="0.41999999999999998" colorSpace="calibratedRGB"/>
+                                            <color key="backgroundColor" red="0.40000000600000002" green="0.40000000600000002" blue="0.40000000600000002" alpha="0.41999999999999998" colorSpace="calibratedRGB"/>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.41999999999999998" colorSpace="calibratedRGB"/>
                                         <connections>
                                             <segue destination="ETs-ez-UPh" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="4PO-8K-GsN"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="gray" hidesAccessoryWhenEditing="NO" indentationWidth="0.0" rowHeight="52" id="gHf-eg-HG7">
+                                        <rect key="frame" x="0.0" y="379" width="600" height="52"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gHf-eg-HG7" id="eGv-ie-WvW">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="52"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="questionicon" translatesAutoresizingMaskIntoConstraints="NO" id="yBf-Xk-AQC">
+                                                    <rect key="frame" x="18" y="4" width="27" height="43"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="How it works!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g7j-vS-gkP">
+                                                    <rect key="frame" x="58" y="14" width="102" height="24"/>
+                                                    <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
+                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" red="0.40000000600000002" green="0.40000000600000002" blue="0.40000000600000002" alpha="0.41999999999999998" colorSpace="calibratedRGB"/>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <segue destination="ydZ-74-iye" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="yKK-ph-SvL"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
@@ -198,13 +214,13 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="MORE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d8G-fZ-Zwp">
-                                                    <rect key="frame" x="23" y="4" width="115" height="42"/>
+                                                    <rect key="frame" x="13" y="4" width="115" height="42"/>
                                                     <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="19"/>
                                                     <color key="textColor" red="0.3510870297" green="1" blue="0.70850635849999999" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
-                                            <color key="backgroundColor" red="0.50196081400000003" green="0.50196081400000003" blue="0.50196081400000003" alpha="0.41999999999999998" colorSpace="calibratedRGB"/>
+                                            <color key="backgroundColor" red="0.40000000600000002" green="0.40000000600000002" blue="0.40000000600000002" alpha="0.41999999999999998" colorSpace="calibratedRGB"/>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.41999999999999998" colorSpace="calibratedRGB"/>
                                     </tableViewCell>
@@ -215,14 +231,17 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="52"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="contact" translatesAutoresizingMaskIntoConstraints="NO" id="lpV-eG-o0F">
+                                                    <rect key="frame" x="18" y="13" width="26" height="26"/>
+                                                </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Contact" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tzo-Bq-Gi3">
-                                                    <rect key="frame" x="23" y="14" width="60" height="24"/>
+                                                    <rect key="frame" x="58" y="14" width="60" height="24"/>
                                                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
-                                            <color key="backgroundColor" red="0.50196081400000003" green="0.50196081400000003" blue="0.50196081400000003" alpha="0.41999999999999998" colorSpace="calibratedRGB"/>
+                                            <color key="backgroundColor" red="0.40000000600000002" green="0.40000000600000002" blue="0.40000000600000002" alpha="0.41999999999999998" colorSpace="calibratedRGB"/>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.41999999999999998" colorSpace="calibratedRGB"/>
                                         <connections>
@@ -382,7 +401,10 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9MZ-PX-6C2">
-                                <rect key="frame" x="547" y="509" width="33" height="33"/>
+                                <rect key="frame" x="538" y="497" width="45" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="9MZ-PX-6C2" secondAttribute="height" multiplier="1:1" id="H8d-FE-ZgJ"/>
+                                </constraints>
                                 <state key="normal" image="locate"/>
                                 <connections>
                                     <action selector="findLocation:" destination="BYZ-38-t0r" eventType="touchUpInside" id="HSZ-h2-ang"/>
@@ -395,11 +417,11 @@
                             <constraint firstItem="AGn-s3-9Eu" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="CHn-O3-bmn"/>
                             <constraint firstItem="AGn-s3-9Eu" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="DVB-oD-P2W"/>
                             <constraint firstItem="PYZ-Kk-kGR" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="GNd-Aw-SSB"/>
-                            <constraint firstItem="9MZ-PX-6C2" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="Hll-Z4-1TM"/>
                             <constraint firstAttribute="trailing" secondItem="AGn-s3-9Eu" secondAttribute="trailing" id="Msx-6N-gkB"/>
                             <constraint firstItem="AGn-s3-9Eu" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="XxI-vS-rMo"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="PYZ-Kk-kGR" secondAttribute="bottom" id="djM-MI-ikk"/>
-                            <constraint firstItem="PYZ-Kk-kGR" firstAttribute="top" secondItem="9MZ-PX-6C2" secondAttribute="bottom" constant="8" id="uWw-5H-xOp"/>
+                            <constraint firstItem="9MZ-PX-6C2" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" constant="3" id="mHw-Ki-Z09"/>
+                            <constraint firstItem="PYZ-Kk-kGR" firstAttribute="top" secondItem="9MZ-PX-6C2" secondAttribute="bottom" constant="8" id="qON-fJ-BMF"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Map" id="6gH-ds-VG4">
@@ -527,7 +549,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="blurberlin" translatesAutoresizingMaskIntoConstraints="NO" id="kFH-QX-4Wd">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="menupic-1" translatesAutoresizingMaskIntoConstraints="NO" id="kFH-QX-4Wd">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="312"/>
                             </imageView>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" zoomEnabled="NO" scrollEnabled="NO" rotateEnabled="NO" pitchEnabled="NO" showsBuildings="NO" showsPointsOfInterest="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HjD-um-t8n">
@@ -688,7 +710,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="98"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="blurberlin" translatesAutoresizingMaskIntoConstraints="NO" id="TrC-mx-K6J">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="menupic-1" translatesAutoresizingMaskIntoConstraints="NO" id="TrC-mx-K6J">
                                                     <rect key="frame" x="0.0" y="0.0" width="600" height="98"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To Submit a Späti, please add a location and name!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="5b2-bb-vu7">
@@ -1007,7 +1029,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="98"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="blurberlin" translatesAutoresizingMaskIntoConstraints="NO" id="eyg-EF-6rf">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="menupic-1" translatesAutoresizingMaskIntoConstraints="NO" id="eyg-EF-6rf">
                                                     <rect key="frame" x="0.0" y="0.0" width="600" height="98"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To Report a Späti, please add a location and name!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="PVT-Ki-AGl">
@@ -1218,9 +1240,16 @@
     </scenes>
     <resources>
         <image name="blurberlin" width="1280" height="720"/>
+        <image name="contact" width="40" height="27"/>
         <image name="iconlist" width="181" height="181"/>
-        <image name="locate" width="33" height="33"/>
+        <image name="iconmenu" width="36" height="50"/>
+        <image name="list" width="41" height="29"/>
+        <image name="locate" width="45" height="45"/>
         <image name="menu" width="26" height="19"/>
+        <image name="menupic-1" width="1536" height="2048"/>
+        <image name="questionicon" width="33" height="69"/>
+        <image name="report" width="29" height="29"/>
+        <image name="submit" width="29" height="29"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="OGG-bQ-UVF"/>
