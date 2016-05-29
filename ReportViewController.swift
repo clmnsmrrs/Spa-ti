@@ -44,6 +44,10 @@ class ReportViewController: UITableViewController {
                     ac.addAction(UIAlertAction(title: "Go back to being epic", style: .Default, handler: nil))
                     self.presentViewController(ac, animated: true, completion: nil)
                 } else {
+                    
+                    let ac = UIAlertController(title: "There seems to be a problem", message: "\(error!.localizedDescription)", preferredStyle: .Alert)
+                    ac.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
+                    self.presentViewController(ac, animated: true, completion: nil)
                     print("Error: \(error) \(error!.userInfo)")
                 }
             }

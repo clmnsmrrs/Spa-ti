@@ -42,7 +42,7 @@ class ContactController: UITableViewController,  MFMailComposeViewControllerDele
         
         let openit = UIAlertAction(title: "Yes", style: .Default) { (action) in
             
-            let openLink = NSURL(string : "http://www.google.com")
+            let openLink = NSURL(string : "https://no129blog.wordpress.com/2016/05/26/spaeti-berlin/")
             UIApplication.sharedApplication().openURL(openLink!)
             
         }

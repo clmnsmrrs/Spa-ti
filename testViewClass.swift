@@ -22,6 +22,7 @@ class testViewClass: UIViewController, CLLocationManagerDelegate {
     var currentLoc: PFGeoPoint! = PFGeoPoint()
     
     
+    
     override func viewDidLoad() {
         
         locationManage.delegate = self
@@ -53,8 +54,11 @@ class testViewClass: UIViewController, CLLocationManagerDelegate {
                             self.TableView.reloadData()
                         }
                     } else {
-                        // Log details of the failure
-                        print("Error: \(error)")
+                        
+                        let ac = UIAlertController(title: "There seems to be a problem", message: "\(error!.localizedDescription)", preferredStyle: .Alert)
+                        ac.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
+                        self.presentViewController(ac, animated: true, completion: nil)
+                        print("Error: \(error) \(error!.userInfo)")
                     }
                 }
                 
@@ -85,8 +89,11 @@ class testViewClass: UIViewController, CLLocationManagerDelegate {
                         
                         }
                     } else {
-                        // Log details of the failure
-                        print("Error: \(error)")
+                        
+                        let ac = UIAlertController(title: "There seems to be a problem", message: "\(error!.localizedDescription)", preferredStyle: .Alert)
+                        ac.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
+                        self.presentViewController(ac, animated: true, completion: nil)
+                        print("Error: \(error) \(error!.userInfo)")
                     }
                 }
             }

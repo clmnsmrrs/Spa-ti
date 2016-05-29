@@ -48,6 +48,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         if(NSUserDefaults.standardUserDefaults().boolForKey("tutorial")==true){
             
         }
@@ -60,7 +61,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         
         
         
-        bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
+        bannerView.adUnitID = "ca-app-pub-6331937442442230/5091136903"
         bannerView.rootViewController = self
         bannerView.loadRequest(GADRequest())
         
@@ -102,8 +103,11 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
                         self.map.addAnnotation(annotation)
                     }
                 } else {
-                    // Log details of the failure
-                    print("Error: \(error)")
+                    
+                    let ac = UIAlertController(title: "There seems to be a problem", message: "\(error!.localizedDescription)", preferredStyle: .Alert)
+                    ac.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
+                    self.presentViewController(ac, animated: true, completion: nil)
+                    print("Error: \(error) \(error!.userInfo)")
                 }
             }
 
@@ -138,8 +142,11 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
                         self.map.addAnnotation(annotation)
                     }
                 } else {
-                    // Log details of the failure
-                    print("Error: \(error)")
+                    
+                    let ac = UIAlertController(title: "There seems to be a problem", message: "\(error!.localizedDescription)", preferredStyle: .Alert)
+                    ac.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
+                    self.presentViewController(ac, animated: true, completion: nil)
+                    print("Error: \(error) \(error!.userInfo)")
                 }
                 
             }
@@ -163,14 +170,13 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         if (interstitialcounter == 0 ){
             
             if(interstitial!.isReady){
-            print("now")
+            
             interstitial!.presentFromRootViewController(self)
             }
             
             else{
                 
                 interstitialcounter = 2
-                print("not loaded yet")
                 
             }
         }
@@ -242,6 +248,35 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     
     @IBAction func findLocation(sender: AnyObject) {
         
+        relocate()
+        
+    }
+
+    
+    func centerMapOnLocation(location: CLLocation) {
+        let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate,
+                                                                  self.regionRadius * 2.0, self.regionRadius * 2.0)
+        self.map.setRegion(coordinateRegion, animated: true)
+    }
+    
+    func centerMapOnLocationDenied(location: CLLocationCoordinate2D) {
+        let coordinateRegion = MKCoordinateRegionMakeWithDistance(CLLocationCoordinate2DMake(52.520295, 13.401604), self.regionRadius * 2.0, self.regionRadius * 2.0)
+        self.map.setRegion(coordinateRegion, animated: true)
+    }
+
+    private func loadInterstitial() {
+        interstitial = GADInterstitial(adUnitID: "ca-app-pub-6331937442442230/9516919302")
+        interstitial!.delegate = self
+        interstitial!.loadRequest(GADRequest())
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    func relocate(){
+        
         let initialLocations = locationManage.location
         
         centerMapOnLocation(initialLocations!)
@@ -267,60 +302,25 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
                     arrayofSpätis.append(thisSpäti)
                     self.map.addAnnotation(annotation)
                 }
-
+                
             } else {
-                // Log details of the failure
-                print("Error: \(error)")
+                
+                let ac = UIAlertController(title: "There seems to be a problem", message: "\(error!.localizedDescription)", preferredStyle: .Alert)
+                ac.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
+                self.presentViewController(ac, animated: true, completion: nil)
+                print("Error: \(error) \(error!.userInfo)")
+                
             }
         }
         
-        
-    }
-
-    
-    func centerMapOnLocation(location: CLLocation) {
-        let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate,
-                                                                  self.regionRadius * 2.0, self.regionRadius * 2.0)
-        self.map.setRegion(coordinateRegion, animated: true)
     }
     
-    func centerMapOnLocationDenied(location: CLLocationCoordinate2D) {
-        let coordinateRegion = MKCoordinateRegionMakeWithDistance(CLLocationCoordinate2DMake(52.520295, 13.401604), self.regionRadius * 2.0, self.regionRadius * 2.0)
-        self.map.setRegion(coordinateRegion, animated: true)
-    }
-    
-    
-    func hexStringToUIColor (hex:String) -> UIColor {
-        var cString:String = hex.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet() as NSCharacterSet).uppercaseString
+    func showmessage() -> (){
         
-        if (cString.hasPrefix("#")) {
-            cString = cString.substringFromIndex(cString.startIndex.advancedBy(1))
-        }
+        let ac = UIAlertController(title: "You didn't want to share your location and that's ok!", message: "if you change your mind, you can allow it in your System Settings!", preferredStyle: .Alert)
+        ac.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
+        self.presentViewController(ac, animated: true, completion: nil)
         
-        if ((cString.characters.count) != 6) {
-            return UIColor.grayColor()
-        }
-        
-        var rgbValue:UInt32 = 0
-        NSScanner(string: cString).scanHexInt(&rgbValue)
-        
-        return UIColor(
-            red: CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0,
-            green: CGFloat((rgbValue & 0x00FF00) >> 8) / 255.0,
-            blue: CGFloat(rgbValue & 0x0000FF) / 255.0,
-            alpha: CGFloat(1.0)
-        )
-    }
-
-    private func loadInterstitial() {
-        interstitial = GADInterstitial(adUnitID: "ca-app-pub-3940256099942544/4411468910")
-        interstitial!.delegate = self
-        interstitial!.loadRequest(GADRequest())
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
 }
