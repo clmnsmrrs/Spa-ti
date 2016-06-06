@@ -21,6 +21,7 @@ class testViewClass: UIViewController, CLLocationManagerDelegate {
     
     var currentLoc: PFGeoPoint! = PFGeoPoint()
     
+    @IBOutlet weak var nothingLabel: UILabel!
     
     
     override func viewDidLoad() {
@@ -38,7 +39,7 @@ class testViewClass: UIViewController, CLLocationManagerDelegate {
                 let annotationQuery = PFQuery(className: "Locations")
                 
                 currentLoc = PFGeoPoint(location: locationManage.location)
-                annotationQuery.whereKey("location", nearGeoPoint: currentLoc, withinMiles: 5)
+                annotationQuery.whereKey("location", nearGeoPoint: currentLoc, withinMiles: 150)
                 annotationQuery.findObjectsInBackgroundWithBlock{
                     (locations, error:NSError?) -> Void in
                     if error == nil {
@@ -51,6 +52,7 @@ class testViewClass: UIViewController, CLLocationManagerDelegate {
                             let coordinate = CLLocationCoordinate2DMake(point.latitude, point.longitude)
                             let thisSpäti = SpätiClass(name: title, address: address,coordinate: coordinate)
                             arrayofSpätis.append(thisSpäti)
+                            self.nothingLabel.hidden = true
                             self.TableView.reloadData()
                         }
                     } else {
@@ -98,6 +100,10 @@ class testViewClass: UIViewController, CLLocationManagerDelegate {
                 }
             }
                 
+        }
+        else{
+            
+            self.nothingLabel.hidden = true
         }
         
         if self.revealViewController() != nil {

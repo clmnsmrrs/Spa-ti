@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -23,14 +24,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         Parse.initializeWithConfiguration(configuration)
+    
+//        let userNotificationTypes: UIUserNotificationType = [.Alert, .Badge, .Sound]
+//        
+//        let settings = UIUserNotificationSettings(forTypes: userNotificationTypes, categories: nil)
+//        application.registerUserNotificationSettings(settings)
+//        application.registerForRemoteNotifications()
+        
+        application.applicationIconBadgeNumber = 0
+        application.statusBarStyle = UIStatusBarStyle.LightContent
+        
         return true
     }
     
     func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
-       
+        // Store the deviceToken in the current Installation and save it to Parse
+        let installation = PFInstallation.currentInstallation()
+        installation.setDeviceTokenFromData(deviceToken)
+        installation.saveInBackground()
     }
     
     func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
+        
         
     }
 

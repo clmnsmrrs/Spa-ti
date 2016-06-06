@@ -327,39 +327,39 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="menupic-1" translatesAutoresizingMaskIntoConstraints="NO" id="vjW-Zv-kdg">
                                 <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ARy-n4-Ov9">
-                                <rect key="frame" x="224" y="477" width="153" height="48"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="153" id="8im-2R-iIT"/>
-                                    <constraint firstAttribute="height" constant="48" id="hkk-55-KEp"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="15"/>
-                                <state key="normal" title="Enable User Location">
-                                    <color key="titleColor" red="0.29803921568627451" green="0.85882352941176465" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="decisionButton:" destination="DSh-uI-UJS" eventType="touchUpInside" id="QWS-Dh-eHP"/>
-                                </connections>
-                            </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="top" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uAk-MD-7W7">
-                                <rect key="frame" x="180" y="113" width="240" height="317"/>
+                                <rect key="frame" x="160" y="113" width="281" height="317"/>
                                 <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="240" id="5gs-k8-xQp"/>
+                                    <constraint firstAttribute="width" constant="281" id="5gs-k8-xQp"/>
                                 </constraints>
                                 <string key="text">Greetings! Welcome to Späti, the app that every Berliner needs.
-This app will help you find your closest Späti for all your possible needs. For this to work, we need you to let us use your location while you use the app. Just click allow and you can get started! Thanks!</string>
+This app will help you find your closest Späti for all your possible needs. For this to work, we need you to let us use your location while you use the app and send you notifications. Just click allow and you can get started! Thanks!</string>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ARy-n4-Ov9">
+                                <rect key="frame" x="189" y="453" width="223" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="223" id="8im-2R-iIT"/>
+                                    <constraint firstAttribute="height" constant="44" id="hkk-55-KEp"/>
+                                </constraints>
+                                <state key="normal" image="buttonnormal">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <state key="highlighted" image="button"/>
+                                <connections>
+                                    <action selector="decisionButton:" destination="DSh-uI-UJS" eventType="touchUpInside" id="QWS-Dh-eHP"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="ARy-n4-Ov9" firstAttribute="top" secondItem="uAk-MD-7W7" secondAttribute="bottom" constant="47" id="3K2-KJ-Vtg"/>
+                            <constraint firstItem="ARy-n4-Ov9" firstAttribute="top" secondItem="uAk-MD-7W7" secondAttribute="bottom" constant="23" id="3K2-KJ-Vtg"/>
                             <constraint firstItem="vjW-Zv-kdg" firstAttribute="bottom" secondItem="WL2-Pc-liI" secondAttribute="top" id="8I3-Va-ALV"/>
                             <constraint firstAttribute="trailing" secondItem="vjW-Zv-kdg" secondAttribute="trailing" id="BQh-4o-qr3"/>
-                            <constraint firstItem="WL2-Pc-liI" firstAttribute="top" secondItem="ARy-n4-Ov9" secondAttribute="bottom" constant="75" id="GN2-qw-JMl"/>
+                            <constraint firstItem="WL2-Pc-liI" firstAttribute="top" secondItem="ARy-n4-Ov9" secondAttribute="bottom" constant="103" id="GN2-qw-JMl"/>
                             <constraint firstItem="uAk-MD-7W7" firstAttribute="top" secondItem="qpd-m9-Ztk" secondAttribute="bottom" constant="49" id="I6S-45-EL1"/>
                             <constraint firstItem="vjW-Zv-kdg" firstAttribute="top" secondItem="qpd-m9-Ztk" secondAttribute="bottom" id="Lek-db-7hn"/>
                             <constraint firstItem="vjW-Zv-kdg" firstAttribute="centerX" secondItem="ARy-n4-Ov9" secondAttribute="centerX" id="Syx-b6-kTf"/>
@@ -394,13 +394,16 @@ This app will help you find your closest Späti for all your possible needs. For
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="Gjm-qf-rdJ"/>
                                 </connections>
                             </mapView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PYZ-Kk-kGR" customClass="GADBannerView">
-                                <rect key="frame" x="0.0" y="550" width="600" height="50"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="please wait for Spätis to load..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="6uP-xc-ykV">
+                                <rect key="frame" x="0.0" y="64" width="600" height="61"/>
+                                <color key="backgroundColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="0.46000000000000002" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="YfL-j1-iz4"/>
+                                    <constraint firstAttribute="width" secondItem="6uP-xc-ykV" secondAttribute="height" multiplier="600:61" id="Fu1-Ty-Xiy"/>
                                 </constraints>
-                            </view>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="18"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9MZ-PX-6C2">
                                 <rect key="frame" x="538" y="497" width="45" height="45"/>
                                 <constraints>
@@ -411,18 +414,80 @@ This app will help you find your closest Späti for all your possible needs. For
                                     <action selector="findLocation:" destination="BYZ-38-t0r" eventType="touchUpInside" id="HSZ-h2-ang"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PYZ-Kk-kGR" customClass="GADBannerView">
+                                <rect key="frame" x="0.0" y="550" width="600" height="50"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="YfL-j1-iz4"/>
+                                </constraints>
+                            </view>
+                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CalloutImage" highlightedImage="blurberlin" translatesAutoresizingMaskIntoConstraints="NO" id="a9f-ez-z6f">
+                                <rect key="frame" x="0.0" y="64" width="600" height="132"/>
+                                <color key="backgroundColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="0.74800646551724137" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="a9f-ez-z6f" secondAttribute="height" multiplier="50:11" id="nON-nG-JU7"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="sEf-bF-Oot">
+                                <rect key="frame" x="0.0" y="64" width="600" height="67"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="sEf-bF-Oot" secondAttribute="height" multiplier="120:13" constant="-18.461538461538453" id="T1g-D5-Svx"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HEz-jA-jgg">
+                                <rect key="frame" x="20" y="133" width="80" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="V7o-vR-VkB"/>
+                                    <constraint firstAttribute="width" constant="80" id="zbC-It-muz"/>
+                                </constraints>
+                                <state key="normal" image="route">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <state key="highlighted" image="routehighlight"/>
+                                <connections>
+                                    <action selector="routeButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="snv-PT-w8P"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VlY-jq-19s">
+                                <rect key="frame" x="500" y="133" width="80" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="Ef3-ma-N0o"/>
+                                    <constraint firstAttribute="height" constant="25" id="VT7-u2-cCh"/>
+                                </constraints>
+                                <state key="normal" image="more">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <state key="highlighted" image="morehighlight"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="6uP-xc-ykV" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="3JT-8z-XCn"/>
+                            <constraint firstItem="sEf-bF-Oot" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="7Sq-k1-XR2"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="6uP-xc-ykV" secondAttribute="trailing" constant="-20" id="9tR-Jp-MZ1"/>
                             <constraint firstAttribute="trailingMargin" secondItem="PYZ-Kk-kGR" secondAttribute="trailing" constant="-20" id="ADB-jG-nds"/>
                             <constraint firstItem="AGn-s3-9Eu" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="CHn-O3-bmn"/>
                             <constraint firstItem="AGn-s3-9Eu" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="DVB-oD-P2W"/>
+                            <constraint firstItem="HEz-jA-jgg" firstAttribute="top" secondItem="sEf-bF-Oot" secondAttribute="bottom" constant="2" id="E6N-8m-oKj"/>
                             <constraint firstItem="PYZ-Kk-kGR" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="GNd-Aw-SSB"/>
+                            <constraint firstItem="6uP-xc-ykV" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="HTg-jh-0rs"/>
+                            <constraint firstItem="a9f-ez-z6f" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="JRh-fS-NWG"/>
                             <constraint firstAttribute="trailing" secondItem="AGn-s3-9Eu" secondAttribute="trailing" id="Msx-6N-gkB"/>
+                            <constraint firstItem="a9f-ez-z6f" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="Oj7-sT-a3P"/>
+                            <constraint firstItem="HEz-jA-jgg" firstAttribute="leading" secondItem="6uP-xc-ykV" secondAttribute="leading" constant="20" id="Qgc-NH-Oyb"/>
                             <constraint firstItem="AGn-s3-9Eu" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="XxI-vS-rMo"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="a9f-ez-z6f" secondAttribute="trailing" constant="-20" id="Zrv-zL-r6m"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="PYZ-Kk-kGR" secondAttribute="bottom" id="djM-MI-ikk"/>
+                            <constraint firstItem="VlY-jq-19s" firstAttribute="trailing" secondItem="6uP-xc-ykV" secondAttribute="trailing" constant="-20" id="fUW-zk-Qgs"/>
+                            <constraint firstItem="VlY-jq-19s" firstAttribute="top" secondItem="6uP-xc-ykV" secondAttribute="bottom" constant="8" symbolic="YES" id="kLs-qi-3qg"/>
                             <constraint firstItem="9MZ-PX-6C2" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" constant="3" id="mHw-Ki-Z09"/>
                             <constraint firstItem="PYZ-Kk-kGR" firstAttribute="top" secondItem="9MZ-PX-6C2" secondAttribute="bottom" constant="8" id="qON-fJ-BMF"/>
+                            <constraint firstItem="sEf-bF-Oot" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="rfC-5g-DF7"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="sEf-bF-Oot" secondAttribute="trailing" constant="-20" id="rfu-IP-eWA"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Map" id="6gH-ds-VG4">
@@ -434,10 +499,16 @@ This app will help you find your closest Späti for all your possible needs. For
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="AdressLabel" destination="sEf-bF-Oot" id="kPN-9g-srA"/>
+                        <outlet property="RouteButton" destination="HEz-jA-jgg" id="Nt4-Hc-uj6"/>
+                        <outlet property="SpätiImage" destination="a9f-ez-z6f" id="zNo-W2-hk4"/>
                         <outlet property="bannerView" destination="PYZ-Kk-kGR" id="xK5-nG-9Ep"/>
                         <outlet property="locationsButton" destination="9MZ-PX-6C2" id="DeM-3O-Ily"/>
                         <outlet property="map" destination="AGn-s3-9Eu" id="ByJ-Qw-Xxt"/>
                         <outlet property="menuButton" destination="JhS-ei-2sP" id="Xtu-NT-lNZ"/>
+                        <outlet property="moreInfo" destination="VlY-jq-19s" id="d6F-Aj-VaY"/>
+                        <outlet property="navBar" destination="6gH-ds-VG4" id="0pZ-6U-DGH"/>
+                        <outlet property="nothingLabel" destination="6uP-xc-ykV" id="v7N-VK-z0B"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -514,13 +585,26 @@ This app will help you find your closest Späti for all your possible needs. For
                                     <outlet property="delegate" destination="OhP-S9-TmK" id="8Bu-IU-Kvw"/>
                                 </connections>
                             </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="please wait for Spätis to load..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="IDL-3Z-akA">
+                                <rect key="frame" x="0.0" y="64" width="600" height="61"/>
+                                <color key="backgroundColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="0.46000000000000002" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="IDL-3Z-akA" secondAttribute="height" multiplier="150:11" constant="-231.81818181818187" id="r8Y-e9-q0m"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="18"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="IDL-3Z-akA" secondAttribute="trailing" constant="-20" id="C0E-1E-n0C"/>
                             <constraint firstItem="4wT-mh-GBE" firstAttribute="top" secondItem="RoS-Fz-EAy" secondAttribute="top" id="IxO-i5-3Qj"/>
+                            <constraint firstItem="IDL-3Z-akA" firstAttribute="leading" secondItem="RoS-Fz-EAy" secondAttribute="leadingMargin" constant="-20" id="Rkq-Di-yAS"/>
                             <constraint firstAttribute="trailing" secondItem="4wT-mh-GBE" secondAttribute="trailing" id="RqE-1z-M9Q"/>
                             <constraint firstItem="4wT-mh-GBE" firstAttribute="leading" secondItem="RoS-Fz-EAy" secondAttribute="leading" id="jDs-Dh-LNN"/>
                             <constraint firstItem="4wT-mh-GBE" firstAttribute="bottom" secondItem="KN3-X0-oft" secondAttribute="top" id="oP9-3c-s4S"/>
+                            <constraint firstItem="IDL-3Z-akA" firstAttribute="top" secondItem="tJN-b9-GWJ" secondAttribute="bottom" id="uzS-As-6sc"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="List" id="E9u-H2-rEp">
@@ -531,6 +615,7 @@ This app will help you find your closest Späti for all your possible needs. For
                     <connections>
                         <outlet property="TableView" destination="4wT-mh-GBE" id="bqZ-1i-LTZ"/>
                         <outlet property="menuButton" destination="EIx-SR-vbl" id="7eu-sn-yh3"/>
+                        <outlet property="nothingLabel" destination="IDL-3Z-akA" id="t4j-iD-sLn"/>
                         <outlet property="tableView" destination="4wT-mh-GBE" id="yPC-OR-HQA"/>
                     </connections>
                 </viewController>
@@ -661,7 +746,7 @@ This app will help you find your closest Späti for all your possible needs. For
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="79"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Späti is the app every Berliner needs. Here’s how you get started:" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cpy-b9-WeU">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Späti is the app every Berliner needs. Here's how you get started:" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cpy-b9-WeU">
                                                     <rect key="frame" x="28" y="8" width="544" height="63"/>
                                                     <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="17"/>
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -742,7 +827,7 @@ This app will help you find your closest Späti for all your possible needs. For
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="NCX-KU-lxG">
                                                     <rect key="frame" x="8" y="40" width="584" height="87"/>
-                                                    <string key="text">When you’ve chosen your Späti, simply click on the icon and choose the “route” option. This will open Maps and show you the quickest way to get there.</string>
+                                                    <string key="text">When you've chosen your Späti, simply click on the icon and choose the "route" option. This will open Maps and show you the quickest way to get there.</string>
                                                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -780,9 +865,9 @@ This app will help you find your closest Späti for all your possible needs. For
                                                     <color key="textColor" red="0.29803921570000003" green="0.85882352939999995" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="MAB-87-gGe">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="MAB-87-gGe">
                                                     <rect key="frame" x="28" y="40" width="544" height="87"/>
-                                                    <string key="text">Found a Späti that isn’t on the map? Help the app grow by submitting the details of the Späti you found by entering them in the form provided.</string>
+                                                    <string key="text">Found a Späti that isn't on the map? Help the app grow by submitting the details of the Späti you found by entering them in the form provided.</string>
                                                     <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="17"/>
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -822,7 +907,7 @@ This app will help you find your closest Späti for all your possible needs. For
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="8us-ca-LDs">
                                                     <rect key="frame" x="28" y="40" width="544" height="87"/>
-                                                    <string key="text">Saw a Späti on the map that didn’t exist or was closed down? We’re sorry to have caused you any trouble, but it would be a great help if you report this problem and we’ll delete the Späti off our map.</string>
+                                                    <string key="text">Saw a Späti on the map that didn’t exist or was closed down? We're sorry to have caused you any trouble, but it would be a great help if you report this problem and we'll delete the Späti off our map.</string>
                                                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -854,13 +939,13 @@ This app will help you find your closest Späti for all your possible needs. For
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thank You" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Nnw-7K-LGo">
                                                     <rect key="frame" x="259" y="8" width="82" height="24"/>
                                                     <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="17"/>
-                                                    <color key="textColor" red="0.29803921570000003" green="0.85882352939999995" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="nhE-rG-LVy">
                                                     <rect key="frame" x="28" y="40" width="544" height="87"/>
-                                                    <string key="text">Hopefully this was helpful, but if you have any more questions, suggestions or just want to say hello, don’t hesitate to contact us via the Contact option!</string>
-                                                    <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
+                                                    <string key="text">Hopefully this was helpful, but if you have any more questions, suggestions or just want to say hello, don't hesitate to contact us via the Contact option!</string>
+                                                    <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="17"/>
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -1452,6 +1537,10 @@ This app will help you find your closest Späti for all your possible needs. For
         </scene>
     </scenes>
     <resources>
+        <image name="CalloutImage" width="2083" height="458"/>
+        <image name="blurberlin" width="1280" height="720"/>
+        <image name="button" width="461" height="93"/>
+        <image name="buttonnormal" width="461" height="93"/>
         <image name="contact" width="40" height="27"/>
         <image name="iconlist" width="181" height="181"/>
         <image name="iconmenu" width="36" height="50"/>
@@ -1459,8 +1548,12 @@ This app will help you find your closest Späti for all your possible needs. For
         <image name="locate" width="45" height="45"/>
         <image name="menu" width="26" height="19"/>
         <image name="menupic-1" width="1536" height="2048"/>
+        <image name="more" width="297" height="93"/>
+        <image name="morehighlight" width="297" height="93"/>
         <image name="questionicon" width="33" height="69"/>
         <image name="report" width="29" height="29"/>
+        <image name="route" width="297" height="93"/>
+        <image name="routehighlight" width="297" height="93"/>
         <image name="submit" width="29" height="29"/>
     </resources>
     <inferredMetricsTieBreakers>

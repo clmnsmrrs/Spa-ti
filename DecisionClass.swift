@@ -29,8 +29,11 @@ class DecisionClass: UIViewController, CLLocationManagerDelegate{
     func checkStatus(){
         
         
+        
         if (CLLocationManager.authorizationStatus() == .AuthorizedWhenInUse){
             
+            UIApplication.sharedApplication().registerUserNotificationSettings(UIUserNotificationSettings(forTypes:[.Badge , .Sound , .Alert], categories: nil))
+            UIApplication.sharedApplication().registerForRemoteNotifications()
             
             clock.invalidate()
             
@@ -44,6 +47,9 @@ class DecisionClass: UIViewController, CLLocationManagerDelegate{
         else if (CLLocationManager.authorizationStatus() == .Denied){
             
             clock.invalidate()
+            
+            UIApplication.sharedApplication().registerUserNotificationSettings(UIUserNotificationSettings(forTypes:[.Badge , .Sound , .Alert], categories: nil))
+            UIApplication.sharedApplication().registerForRemoteNotifications()
             
             NSUserDefaults.standardUserDefaults().setBool(true, forKey: "tutorial")
 
