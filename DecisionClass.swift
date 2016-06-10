@@ -22,8 +22,6 @@ class DecisionClass: UIViewController, CLLocationManagerDelegate{
         super.viewDidLoad()
         
         locationManage.delegate = self
-        clock = NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: #selector(DecisionClass.checkStatus), userInfo: nil, repeats: true)
-        clock.fire()
     }
     
     func checkStatus(){
@@ -37,7 +35,7 @@ class DecisionClass: UIViewController, CLLocationManagerDelegate{
             
             clock.invalidate()
             
-            NSUserDefaults.standardUserDefaults().setBool(true, forKey: "tutorial")
+            NSUserDefaults.standardUserDefaults().setBool(true, forKey: "notificationss")
             
             let ViewControllerfirst: SWRevealViewController = self.storyboard!.instantiateViewControllerWithIdentifier("start") as! SWRevealViewController
             
@@ -51,7 +49,7 @@ class DecisionClass: UIViewController, CLLocationManagerDelegate{
             UIApplication.sharedApplication().registerUserNotificationSettings(UIUserNotificationSettings(forTypes:[.Badge , .Sound , .Alert], categories: nil))
             UIApplication.sharedApplication().registerForRemoteNotifications()
             
-            NSUserDefaults.standardUserDefaults().setBool(true, forKey: "tutorial")
+            NSUserDefaults.standardUserDefaults().setBool(true, forKey: "notificationss")
 
             let ac = UIAlertController(title: "You didn't want to share your location and that's ok!", message: "if you change your mind, you can allow it in your System Settings!", preferredStyle: .Alert)
             
@@ -76,6 +74,9 @@ class DecisionClass: UIViewController, CLLocationManagerDelegate{
     
     @IBAction func decisionButton(sender: AnyObject) {
 
+        clock = NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: #selector(DecisionClass.checkStatus), userInfo: nil, repeats: true)
+        
+        clock.fire()
             
             locationManage.requestWhenInUseAuthorization()
             

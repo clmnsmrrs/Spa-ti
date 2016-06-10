@@ -17,8 +17,6 @@ var arrayofSpätis = [SpätiClass]()
 
 class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, GADInterstitialDelegate{
     
-    @IBOutlet weak var navBar: UINavigationItem!
-    
     var interstitial: GADInterstitial?
     
     var interstitialcounter = 4
@@ -29,7 +27,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     
     let location = CLLocationCoordinate2D(latitude: 37.3317115, longitude: -122.0301835)
     
-    let regionRadius: CLLocationDistance = 1500
+    let regionRadius: CLLocationDistance = 800
     
     var currentLoc: PFGeoPoint! = PFGeoPoint()
     
@@ -45,7 +43,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     
     @IBOutlet weak var bannerView: GADBannerView!
     
-    let tutorial:Bool = NSUserDefaults.standardUserDefaults().boolForKey("tutorial")
+    let tutorial:Bool = NSUserDefaults.standardUserDefaults().boolForKey("notificationss")
     
     @IBOutlet weak var moreInfo: UIButton!
 
@@ -70,7 +68,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         SpätiImage.hidden = true
         RouteButton.hidden = true
         
-        if(NSUserDefaults.standardUserDefaults().boolForKey("tutorial")==true){
+        if(NSUserDefaults.standardUserDefaults().boolForKey("notificationss")==true){
             
         }
         else
@@ -130,6 +128,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
                     ac.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
                     self.presentViewController(ac, animated: true, completion: nil)
                     print("Error: \(error) \(error!.userInfo)")
+                    self.nothingLabel.text = "Please reload the page!"
                 }
             }
 
@@ -148,7 +147,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
             let annotationQuery = PFQuery(className: "Locations")
             
             currentLoc = PFGeoPoint(latitude: 52.520295, longitude: 13.401604)
-            annotationQuery.whereKey("location", nearGeoPoint: currentLoc, withinMiles: 150)
+            annotationQuery.whereKey("location", nearGeoPoint: currentLoc, withinMiles: 1500)
             annotationQuery.findObjectsInBackgroundWithBlock{
                 (locations, error:NSError?) -> Void in
                 if error == nil {
@@ -174,6 +173,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
                     ac.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
                     self.presentViewController(ac, animated: true, completion: nil)
                     print("Error: \(error) \(error!.userInfo)")
+                    self.nothingLabel.text = "Please reload the page!"
                 }
                 
             }
@@ -191,17 +191,26 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     }
     
     func mapView(mapView: MKMapView, didDeselectAnnotationView view: MKAnnotationView) {
+        if view.annotation!.isKindOfClass(MKUserLocation){
+            
+        }
+        else{
         AdressLabel.hidden = true
         SpätiImage.hidden = true
         moreInfo.hidden = true
         RouteButton.hidden = true
         view.image = UIImage(named: "spati")
+        }
     }
     
     
     func mapView(mapView: MKMapView,
                  didSelectAnnotationView view: MKAnnotationView){
-        
+       
+        if view.annotation!.isKindOfClass(MKUserLocation){
+            
+        }
+        else{
         currentadress = ((view.annotation?.subtitle)!)!
         currentname = ((view.annotation?.title)!)!
         currentcoordinate = (view.annotation?.coordinate)!
@@ -211,7 +220,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         SpätiImage.hidden = false
         RouteButton.hidden = false
         moreInfo.hidden = false
-        
+        }
         interstitialcounter = interstitialcounter - 1
         
         if (interstitialcounter == 0 ){
@@ -228,37 +237,6 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
             }
         }
         
-    }
-    
-    func mapView(mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
-        
-        
-//        let placeName = view.annotation?.title
-//        let placeInfo = view.annotation?.subtitle
-//        
-//        let routeaction = UIAlertAction(title: "Route", style: .Default) { (action) in
-//            
-//            let thiscoordinate = view.annotation?.coordinate
-//            let regionDistance:CLLocationDistance = 10000
-//            
-//            let regionSpan = MKCoordinateRegionMakeWithDistance(thiscoordinate!, regionDistance, regionDistance)
-//            let options = [
-//                MKLaunchOptionsMapCenterKey: NSValue(MKCoordinate: regionSpan.center),
-//                MKLaunchOptionsMapSpanKey: NSValue(MKCoordinateSpan: regionSpan.span)
-//            ]
-//            let placemark = MKPlacemark(coordinate: thiscoordinate!, addressDictionary: nil)
-//            let mapItem = MKMapItem(placemark: placemark)
-//            mapItem.name = (view.annotation?.title)!
-//            mapItem.openInMapsWithLaunchOptions(options)
-//            
-//        }
-// 
-//        let ac = UIAlertController(title: placeName!, message: placeInfo!, preferredStyle: .Alert)
-//        ac.addAction(UIAlertAction(title: "Done", style: .Default, handler: nil))
-//        ac.addAction(routeaction)
-//        presentViewController(ac, animated: true, completion: nil)
-//        
-//        print("pressed the detail button")
     }
     
     
@@ -279,7 +257,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         if annotationView == nil
         {
             
-            annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: "pin")
+            annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: identifier)
             annotationView!.canShowCallout = false
             annotationView!.image = UIImage(named: "spati")
             annotationView!.rightCalloutAccessoryView = detailButton
@@ -328,38 +306,6 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         
         centerMapOnLocation(initialLocations!)
         
-        let annotationQuery = PFQuery(className: "Locations")
-        
-        currentLoc = PFGeoPoint(location: locationManage.location)
-        annotationQuery.whereKey("location", nearGeoPoint: currentLoc, withinMiles: 150)
-        annotationQuery.findObjectsInBackgroundWithBlock{
-            (locations, error:NSError?) -> Void in
-            if error == nil {
-                
-                let myLocations = locations! as [PFObject]
-                for location in myLocations {
-                    let point = location["location"] as! PFGeoPoint
-                    let title = location["name"] as! String
-                    let address = location["address"] as! String
-                    let annotation = MKPointAnnotation()
-                    annotation.coordinate = CLLocationCoordinate2DMake(point.latitude, point.longitude)
-                    annotation.title = title
-                    annotation.subtitle = address
-                    let thisSpäti = SpätiClass(name: title, address: address,coordinate: annotation.coordinate)
-                    arrayofSpätis.append(thisSpäti)
-                    self.map.addAnnotation(annotation)
-                }
-                
-            } else {
-                
-                let ac = UIAlertController(title: "There seems to be a problem", message: "\(error!.localizedDescription)", preferredStyle: .Alert)
-                ac.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
-                self.presentViewController(ac, animated: true, completion: nil)
-                print("Error: \(error) \(error!.userInfo)")
-                
-            }
-        }
-        
     }
     
     func showmessage() -> (){
@@ -391,4 +337,36 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         
     }
     
+    
+    @IBAction func reportButton(sender: AnyObject) {
+       
+        let report = UIAlertAction(title: "Report", style: .Destructive) { (action) in
+            
+            let location = PFObject(className: "ReportSpati")
+            location.setObject(self.currentname, forKey: "Name")
+            location.setObject(self.currentadress, forKey: "Address")
+            location.saveInBackgroundWithBlock { (succeeded, error) -> Void in
+                if succeeded {
+                    let ac = UIAlertController(title: "Thanks for Sharing!", message: "You're making this app even more useful!", preferredStyle: .Alert)
+                    ac.addAction(UIAlertAction(title: "Go back to being epic", style: .Default, handler: nil))
+                    self.presentViewController(ac, animated: true, completion: nil)
+                } else {
+                    
+                    let ac = UIAlertController(title: "There seems to be a problem", message: "\(error!.localizedDescription)", preferredStyle: .Alert)
+                    ac.addAction(UIAlertAction(title: "OK", style: .Cancel, handler: nil))
+                    self.presentViewController(ac, animated: true, completion: nil)
+                    print("Error: \(error) \(error!.userInfo)")
+                }
+            }
+            
+        }
+        
+        let ac = UIAlertController(title: "Report Späti?", message: "Does this Späti no longer exist?", preferredStyle: .Alert)
+        ac.addAction(report)
+        ac.addAction(UIAlertAction(title: "Go Back", style: .Default, handler: nil))
+        presentViewController(ac, animated: true, completion: nil)
+        
+    }
+
+
 }

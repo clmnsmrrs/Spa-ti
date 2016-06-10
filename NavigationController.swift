@@ -15,7 +15,6 @@ class NavigationController: UINavigationController {
     override func viewDidLoad() {
         navigationBar.barTintColor = greencolor
         navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor()]
-        navigationBar.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
     }
     
     override func viewDidAppear(animated: Bool) {

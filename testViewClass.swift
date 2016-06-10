@@ -29,6 +29,7 @@ class testViewClass: UIViewController, CLLocationManagerDelegate {
         locationManage.delegate = self
         locationManage.desiredAccuracy = kCLLocationAccuracyBest
         locationManage.startUpdatingLocation()
+        TableView.scrollsToTop = true
         
         if (arrayofSpätis.count == 0){
             
@@ -39,7 +40,7 @@ class testViewClass: UIViewController, CLLocationManagerDelegate {
                 let annotationQuery = PFQuery(className: "Locations")
                 
                 currentLoc = PFGeoPoint(location: locationManage.location)
-                annotationQuery.whereKey("location", nearGeoPoint: currentLoc, withinMiles: 150)
+                annotationQuery.whereKey("location", nearGeoPoint: currentLoc, withinMiles: 1500)
                 annotationQuery.findObjectsInBackgroundWithBlock{
                     (locations, error:NSError?) -> Void in
                     if error == nil {
@@ -73,7 +74,7 @@ class testViewClass: UIViewController, CLLocationManagerDelegate {
                 let annotationQuery = PFQuery(className: "Locations")
                 
                 currentLoc = PFGeoPoint(latitude: 52.520295, longitude: 13.401604)
-                annotationQuery.whereKey("location", nearGeoPoint: currentLoc, withinMiles: 150)
+                annotationQuery.whereKey("location", nearGeoPoint: currentLoc, withinMiles: 1500)
                 annotationQuery.findObjectsInBackgroundWithBlock{
                     (locations, error:NSError?) -> Void in
                     if error == nil {
